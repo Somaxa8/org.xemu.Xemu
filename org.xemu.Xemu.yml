@@ -14,8 +14,6 @@ finish-args:
 modules:
   - name: xemu
     buildsystem: cmake-ninja
-    build-commands:
-      - /usr/lib/sdk/openjdk8/install.sh
     sources:
       - type: git
         url: https://github.com/mborgerson/xemu
