@@ -12,6 +12,7 @@ finish-args:
   - "--device=kvm"
   - "--filesystem=home"
 modules:
+  - shared-modules/glu-9.json
   - name: xemu
     buildsystem: cmake-ninja
     sources:
