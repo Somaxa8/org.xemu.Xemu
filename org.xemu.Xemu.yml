@@ -1,0 +1,26 @@
+app-id: org.xemu.Xemu
+runtime: org.freedesktop.Platform
+runtime-version: '20.08'
+sdk: org.freedesktop.Platform
+command: xemu
+finish-args:
+  - "--share=ipc"
+  - "--socket=x11"
+  - "--socket=wayland"
+  - "--socket=pulseaudio"
+  - "--share=network"
+  - "--device=kvm"
+  - "--filesystem=home"
+modules:
+  - name: xemu
+    buildsystem: cmake-ninja
+    build-commands:
+      - /usr/lib/sdk/openjdk8/install.sh
+    sources:
+      - type: git
+        url: https://github.com/mborgerson/xemu
+        commit: 3c1fcf620256babded72d7f4c72f6ad414d5b306
+      - type: file
+        path: org.xemu.Xemu.metainfo.xml
+    post-install:
+      - install -Dp -m 644 ${FLATPAK_ID}.metainfo.xml   ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
